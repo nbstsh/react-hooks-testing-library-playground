@@ -7,4 +7,11 @@ describe('[CUSTOM HOOK] useIncrement', () => {
 		act(() => result.current.increment());
 		expect(result.current.value).toEqual(1);
 	});
+
+	it('should not increment value over 5', () => {
+		const { result } = renderHook(() => useIncrement());
+		const increment = () => act(() => result.current.increment());
+		[...Array(6)].forEach(increment);
+		expect(result.current.value).toEqual(5);
+	});
 });
