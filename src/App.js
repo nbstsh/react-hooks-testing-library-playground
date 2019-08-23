@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import Increment from './components/increment/increment.component';
+import { IncrementProvider } from './components/increment/increment.context';
 
 function App() {
 	return (
 		<div className='App'>
-			<Increment />
+			<IncrementProvider>
+				<Increment />
+			</IncrementProvider>
 		</div>
 	);
 }

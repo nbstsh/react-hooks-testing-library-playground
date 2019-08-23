@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { IncrementContext } from './increment.context';
 
 const useIncrement = () => {
-	const [value, setValue] = useState(0);
+	const context = useContext(IncrementContext);
+	if (!context)
+		throw new Error('useIncrement must be used within a IncrementProvider');
+
+	const [value, setValue] = context;
 
 	const increment = () => {
 		if (value >= 5) return;

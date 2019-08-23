@@ -1,5 +1,6 @@
 import React from 'react';
 import useIncrement from './increment.hook';
+import { IncrementProvider } from './increment.context';
 
 const Increment = props => {
 	const { value, increment } = useIncrement();
