@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useIncrement from './increment.hook';
 
 const Increment = props => {
