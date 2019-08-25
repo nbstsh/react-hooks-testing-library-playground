@@ -1,6 +1,6 @@
 import React, { useState, useContext, useCallback, createContext } from 'react';
 
-const CounterStepContext = createContext();
+const CounterStepContext = createContext(1);
 
 export const CounterStepProvider = ({ step, children }) => {
 	return (

@@ -38,4 +38,15 @@ describe('useCounter', () => {
 
 		expect(result.current.count).toBe(initialValue + step);
 	});
+
+	it('should throw when over 9000', () => {
+		const initialValue = 9000;
+		const { result } = renderHook(() => useCounter(initialValue));
+
+		expect(result.current.count).toBe(initialValue);
+
+		act(() => result.current.increment());
+
+		expect(result.error).toEqual(Error(`It's over 9000!`));
+	});
 });
