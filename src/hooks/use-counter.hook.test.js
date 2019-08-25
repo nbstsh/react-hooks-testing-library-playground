@@ -19,5 +19,23 @@ describe('useCounter', () => {
 		expect(result.current.count).toBe(initialValue + step);
 	});
 
-	it('should ');
+	it('should increment counter after delay', async () => {
+		const step = 2;
+		const initialValue = 100;
+
+		const wrapper = ({ children }) => (
+			<CounterStepProvider step={step}>{children}</CounterStepProvider>
+		);
+		const { result, waitForNextUpdate } = renderHook(
+			() => useCounter(initialValue),
+			{ wrapper }
+		);
+
+		expect(result.current.count).toBe(initialValue);
+
+		result.current.incrementAsync();
+		await waitForNextUpdate();
+
+		expect(result.current.count).toBe(initialValue + step);
+	});
 });
